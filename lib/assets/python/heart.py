@@ -1,4 +1,5 @@
 from youtube_transcript_api import YouTubeTranscriptApi
+import json
 
 transcript = YouTubeTranscriptApi.get_transcript("pMKsed-y744")
 length = len(transcript)
@@ -26,9 +27,12 @@ for word in word_list:
     else:
         word_frequency[word] = 1
 
+#Note: sorted converts map to list. We now have a list of tuples of str, int
 sorted_word_frequency = sorted(word_frequency.items(), key=lambda x: x[1], reverse=True)
-print(sorted_word_frequency)
-
+#print(type(sorted_word_frequency[1][0]))
+test = json.dumps(word_frequency)
+print(test)
+#puts sorted_word_frequency
 
 #=====================YouTube dl tutorial==================
 # import youtube_dl

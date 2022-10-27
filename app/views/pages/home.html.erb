@@ -1,2 +1,7 @@
 <h1>Home</h1>
-<p>It's where the <%= @heart %> </p>
+<%# <%=  react_component "path to component here", { frequencyData: @heart.frequency, ....} %>
+<%= javascript_pack_tag 'hello_react' %>
+    <%= content_tag :div,
+      id: "word_data",
+      data: @heart.to_json do %>
+   <% end %>
