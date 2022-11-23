@@ -1,7 +1,11 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 import json
+import sys
+import collections
+import re
 
-transcript = YouTubeTranscriptApi.get_transcript("pMKsed-y744")
+video_id = sys.argv[1]
+transcript = YouTubeTranscriptApi.get_transcript(video_id)
 length = len(transcript)
 i = 0
 words = ""
@@ -29,6 +33,14 @@ for word in word_list:
 
 #Note: sorted converts map to list. We now have a list of tuples of str, int
 sorted_word_frequency = sorted(word_frequency.items(), key=lambda x: x[1], reverse=True)
+#convert back to a map
+word_frequency = collections.OrderedDict(sorted_word_frequency)
+#remove punctuation?
+punc = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+for key in word_frequency:
+    for i in key:
+        if i in punc:
+            key = key.replace(i, "")
 #print(type(sorted_word_frequency[1][0]))
 test = json.dumps(word_frequency)
 print(test)

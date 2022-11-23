@@ -1,7 +1,24 @@
-<h1>Home</h1>
+
+<html>
+<head>
+<style>
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+img {width: 100%;}
+</style>
+</head>
+<body>
+
+</body>
+
+<h1><img src="https://cdn.discordapp.com/attachments/553982258026119179/1044964295894630410/youtube.jpg" alt="YouTube logo" style="width:60px;height:40px;"> <u>YouTube Word Distribution</u> <img src="https://cdn.discordapp.com/attachments/553982258026119179/1044964295894630410/youtube.jpg" alt="YouTube logo" style="width:60px;height:40px;"></h1>
 <%# <%=  react_component "path to component here", { frequencyData: @heart.frequency, ....} %>
-<%= javascript_pack_tag 'hello_react' %>
+<%= javascript_pack_tag 'Index' %>
     <%= content_tag :div,
       id: "word_data",
-      data: @heart.to_json do %>
+      data: @heart.to_json do %> 
+      <%# Make changes to data; on submit, render table and send here (with data) %>
+      <%# Move results to pages/results, pages would just be the form (default should be the form) %>
+      <%# Do CSS, Comment everything out in current table, make form version, and then we'll work on having a separate  %>
    <% end %>
