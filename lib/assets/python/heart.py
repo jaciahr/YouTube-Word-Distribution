@@ -12,8 +12,7 @@ words = ""
 
 while i < length:
     addition = transcript[i]['text']
-    if addition != "[Music]":
-        words += addition
+    words += addition
     if i < length-1:
         words += " "
     i += 1
@@ -23,6 +22,28 @@ word_list = list(words.split(" "))
 #print(word_list)
 #puts word_list.inspect
 
+def remove_punc(string):
+    if string == "[Laughter]" or string == "[Music]":
+        string = ""
+    punc = '''!()-[]{};:"\, <>./?@#$%^&*_~'''
+    string = string.lower()
+    for ele in string:  
+        if ele in punc:  
+            string = string.replace(ele, "") 
+    return string
+
+word_list = [remove_punc(i) for i in word_list]
+word_list = sorted(word_list)
+
+def remove_spaces(L, item):
+    answer = []
+    for i in L:
+        if i!=item:
+            answer.append(i)
+    return answer
+
+word_list = remove_spaces(word_list, "")
+
 word_frequency = {}
 
 for word in word_list:
@@ -31,16 +52,15 @@ for word in word_list:
     else:
         word_frequency[word] = 1
 
+#MAP remove punctuation?
+# punc = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+# for word in word_frequency:
+#     word_frequency['hi'] = word_frequency[word]
+#     del word_frequency[word]
 #Note: sorted converts map to list. We now have a list of tuples of str, int
 sorted_word_frequency = sorted(word_frequency.items(), key=lambda x: x[1], reverse=True)
 #convert back to a map
 word_frequency = collections.OrderedDict(sorted_word_frequency)
-#remove punctuation?
-punc = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
-for key in word_frequency:
-    for i in key:
-        if i in punc:
-            key = key.replace(i, "")
 #print(type(sorted_word_frequency[1][0]))
 test = json.dumps(word_frequency)
 print(test)

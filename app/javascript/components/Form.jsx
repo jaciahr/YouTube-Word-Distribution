@@ -14,15 +14,17 @@ const Form  = ({setWordData}) => {
   const { register, formState: { errors }, handleSubmit } = useForm();
   
   
-  function onSubmit(data) {
-    console.log(data.youTubeUrl)
-    getYouTubeIDFromString(data.youTubeUrl)
+  async function onSubmit(data) {
+    //console.log(data.youTubeUrl)
+    await getYouTubeIDFromString(data.youTubeUrl)
+    // get data before calling next line
     // const youtubeID = "B0DFcG_SgGo"
     getYoutubeUrl(youtubeId) 
   }
   //use regex to get the youtubeID from user input
   
   function getYouTubeIDFromString(string) { 
+    //===**TO DO: return this, save it to a const, and THEN call getYoutube URL 22 */==
     //do regex
     //return ID
     //setYoutubeID(string)
@@ -66,11 +68,12 @@ const Form  = ({setWordData}) => {
     catch (error) {}
   }
   return(
-    <div style={{padding: "20px", backgroundColor: "#e6e6e6"}}>
+    // <div style={{padding: "20px", backgroundColor: "#e6e6e6"}}>
+    <div style={{padding: "20px"}}>
     <form className="mysupercoolform" onSubmit={handleSubmit(onSubmit)}>
         <label style={{fontWeight: "bold"}}>
-            YouTube URL:
-            <input {...register("youTubeUrl", { required: true})} />
+            YouTube URL: 
+            <input style={{width:"300px"}}{...register("youTubeUrl", { required: true})} />
             {errors.youTubeUrl?.type === 'required' && <p>Youtube URL is required</p>}
             {console.log(errors)}
         </label>

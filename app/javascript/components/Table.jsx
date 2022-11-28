@@ -10,6 +10,8 @@ export const YouTubeTable = ({data}) => {
         setWords(words)
         // const sortedMap = new Map([...data].sort((a, b) => String(a[1]).localeCompare(b[1])));
         // setWords(sortedMap);
+        //object.key
+        //DESCENDING: arr.sort( function ( a, b ) { return b.date - a.date; } );
     }
 
     return(

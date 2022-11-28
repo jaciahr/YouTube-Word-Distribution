@@ -7,11 +7,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <%= favicon_link_tag asset_path('youtube.png') %>
     
   </head>
 
   <body>
     <%= yield %>
+    
   </body>
 </html>
+<footer>
+  <p>Made by Jaciah Rashid<br>
+  <a href="mailto:jaciah.rashid@ufl.edu">jaciah.rashid@ufl.edu</a></p>
+</footer>
