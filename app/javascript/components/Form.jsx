@@ -13,6 +13,9 @@ const Form  = ({setWordData}) => {
   const [youtubeId, setYoutubeID] = useState(null);
   const { register, formState: { errors }, handleSubmit } = useForm();
   
+  // const logChange = useEffect(() => {
+  //   console.log(response);
+  // }, [response]);
   
   async function onSubmit(data) {
     //console.log(data.youTubeUrl)
@@ -60,7 +63,10 @@ const Form  = ({setWordData}) => {
           {youtube_id: id}
         })
         .then((response) => {
-         console.log(response)
+        //   useEffect(() => {
+        //     console.log(response);
+        // })
+          console.log(response);
           setWordData(response.data)
         //  TAKE THE RESPONSE FROM HERE AND PASS IT BACK TO THE INDEX
         });
